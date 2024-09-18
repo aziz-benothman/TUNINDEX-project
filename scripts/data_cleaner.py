@@ -1,5 +1,5 @@
-# scripts/data_cleaner.py
 import pandas as pd
+import numpy as np
 import os
 
 class DataCleaner:
@@ -35,6 +35,18 @@ class DataCleaner:
         # Combine old data and the new entries
         combined_data = pd.concat([new_entries, df_old])
 
+        # Get arima and garch data from combined data
+        covid_start_date = pd.to_datetime('2020-04-01')
+        arima_data = combined_data['close']
+        arima_data.sort_index(inplace=True)
+        arima_data = arima_data[arima_data.index >= covid_start_date ]
+        arima_data.to_csv('data/clean/arima_data.csv', index=True)
+
+        garch_data = np.log(combined_data['close']/combined_data['close'].shift(1))*100
+        garch_data.dropna(inplace=True)
+        garch_data.sort_index(inplace=True)
+        garch_data = garch_data[garch_data.index >= covid_start_date ]
+        garch_data.to_csv('data/clean/garch_data.csv', index=True)
         # Save the combined data to a new CSV file
         combined_data.to_csv(output_file_path, index=True)
 
