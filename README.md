@@ -17,9 +17,8 @@ The project is designed to automatically download new data, update the models, a
 
 ### Main Features
 
-1. **Exploratory Data Analysis (EDA)**: Visualizes and analyzes historical trends, seasonality, stationarity, and volatility in the TUNINDEX dataset. This is detailed in the notebook: `notebooks/EDA_notebook.ipynb`.
+1. **Exploratory Data Analysis (EDA)**: Visualizes and analyzes historical trends, seasonality, stationarity, and volatility in the TUNINDEX dataset. This is detailed in the notebooks 
 2. **Parameter Estimation and Model Validation**: The notebook focuses on estimating the parameters for ARIMA and GARCH, using mse and validating the model through walk-forward validation.
 3. **ARIMA Model**: Utilized for forecasting the TUNINDEX price based on historical time series data.
 4. **GARCH Model**: Applied to the residuals of the ARIMA model to capture volatility and estimate confidence intervals.
-
-5. **Automation**: Scripts that automate the process of data downloading, cleaning, and updating the forecasts to ensure the models are always working with the latest data.
+5. **Automation**: Scripts that automate the process of data downloading, cleaning.
